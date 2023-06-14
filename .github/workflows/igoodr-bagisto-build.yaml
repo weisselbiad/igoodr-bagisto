@@ -47,8 +47,8 @@ jobs:
 #          MY_SECRET_ENV_VAR: ${{ secrets.MY_SECRET }} # here you can find information how to create secrets: https://docs.github.com/en/actions/security-guides/encrypted-secrets
         with:
           php_version: '8.1'
-          version: '2.3.0'
-          args: --optimize-autoloader --no-dev
+          version: '2'
+          args: --ignore-platform-reqs --optimize-autoloader --no-dev
 
       - name: Build PHP assets
 # uncomment the following lines if you want to add environment variables for this step
@@ -76,7 +76,7 @@ jobs:
         with:
           api-key: ${{ secrets.IONOS_API_KEY }}
           service-host: api-eu.ionos.space
-          project-id: ee54729c-0689-400f-8def-502ec77a64d1
+          project-id: 4004f711-4697-45ec-94b8-564a68f66414
           branch-id: ${{ inputs.branch-id }}
           version: ${{ github.sha }}
           folder: ${{ env.DEPLOYMENT_FOLDER }}
