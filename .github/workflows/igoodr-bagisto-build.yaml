@@ -56,13 +56,13 @@ jobs:
 #          MY_ENV_VAR: value-for-my-env-var
 #          MY_SECRET_ENV_VAR: ${{ secrets.MY_SECRET }} # here you can find information how to create secrets: https://docs.github.com/en/actions/security-guides/encrypted-secrets
         run: |
-          composer create-project bagisto/bagisto 
           php artisan key:generate --force -n
-          php artisan bagisto:install
+          composer create-project bagisto/bagisto
           php artisan migrate
           php artisan db:seed
-          php artisan vendor:publish 
+          php artisan vendor:publish
           php artisan storage:link
+          composer dump-autoload
 
       - name: Setup Node
         uses: actions/setup-node@v3
@@ -83,7 +83,7 @@ jobs:
         with:
           api-key: ${{ secrets.IONOS_API_KEY }}
           service-host: api-eu.ionos.space
-          project-id: ce90f24f-32de-4b3c-bd9c-cd1de4faec52
+          project-id: 8e6f1bba-e565-4d18-a327-7ff753a83c61
           branch-id: ${{ inputs.branch-id }}
           version: ${{ github.sha }}
           folder: ${{ env.DEPLOYMENT_FOLDER }}
